@@ -5,7 +5,7 @@ import Link from 'next/link';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
 import InteriorPackages from "../components/interiorPackages";
-import heroFurniture  from '../../public/home interior nashik.png';
+import heroFurniture from '../../public/home interior nashik.png';
 
 
 
@@ -52,7 +52,7 @@ export default function Home() {
           </div>
           <div className="md:w-[400px] bg-white p-8 rounded-lg shadow-2xl">
             <h3 className="text-2xl font-bold text-gray-800 mb-4">Get a Quote</h3>
-            <ContactForm  />
+            <ContactForm />
           </div>
         </div>
       </section>
@@ -102,6 +102,7 @@ export default function Home() {
         `}</style>
       </section>
 
+      ADD
 
       {/* Footer */}
       <Footer />
