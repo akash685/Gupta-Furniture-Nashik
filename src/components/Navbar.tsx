@@ -16,7 +16,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/">
-              <span className="text-xl font-bold">Gupta Furniture</span>
+              <h1 className="text-xl font-bold text-black">Gupta Furniture Nashik</h1>
             </Link>
           </div>
 
