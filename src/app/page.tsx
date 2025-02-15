@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 
-import InteriorPackages from "../components/interiorPackages";
+import InteriorPackages from "@/components/interiorPackages";
 import Products from '@/components/Products';
 import Testimonials from '@/components/Testimonials';
 import Hero from '@/components/Hero';
