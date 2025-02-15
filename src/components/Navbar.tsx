@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +10,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-lg">
+    <nav className="fixed top-0 left-0 right-0 bg-white shadow-lg z-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-16">
           {/* Logo */}
