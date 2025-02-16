@@ -15,7 +15,7 @@ function interiorPackages() {
     <div>
       {/* Interior Packages Section */}
       <section className="py-10 px-3 border-b-4 border-gray-200 bg-white">
-        <h2 className="text-4xl font-bold text-center mb-12">Best Home Interior Packages</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-center mb-5">Best Home Interior Packages</h2>
         <div className="flex space-x-4 overflow-x-auto max-w-6xl mx-auto pb-4">
           {interiorPackagesData.map((pkg, index) => (
             <div
@@ -29,7 +29,7 @@ function interiorPackages() {
                 height={300}
                 className="rounded-lg object-cover mb-4"
               />
-              <h3 className="text-xl font-semibold mb-2">{pkg.title}</h3>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2">{pkg.title}</h3>
               <p className="mb-4">{pkg.description}</p>
               <p className="font-bold text-gray-700">{pkg.price}</p>
               <div className="mt-4 flex flex-col space-y-2">

@@ -16,7 +16,7 @@ function Products() {
   return (
     <div>
       <section className="py-10 px-3 border-b-4 border-gray-200 bg-white">
-        <h2 className="text-4xl font-bold text-center mb-12">Our Furniture Products</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-center mb-5">Our Furniture Products</h2>
         <div className="flex space-x-4 overflow-x-auto max-w-6xl mx-auto pb-4 no-scrollbar">
           {products.map((product, index) => (
             <div

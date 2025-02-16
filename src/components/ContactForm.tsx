@@ -4,7 +4,6 @@ import { useState } from 'react';
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     phone: '',
     message: ''
   });
@@ -16,7 +15,7 @@ export default function ContactForm() {
     console.log(formData);
     setSuccess(true);
     // Optionally clear the form after submission
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    setFormData({ name: '', phone: '', message: '' });
     // Hide success message after 3 seconds
     setTimeout(() => {
       setSuccess(false);
@@ -44,18 +43,6 @@ export default function ContactForm() {
             name="name"
             placeholder="Your Name"
             value={formData.name}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-        </div>
-        
-        <div>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={formData.email}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required

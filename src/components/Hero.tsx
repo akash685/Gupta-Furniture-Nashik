@@ -19,7 +19,7 @@ function Hero() {
         </div>
         <div className="container mx-auto px-6 z-10 flex flex-col md:flex-row items-center justify-between">
           <div className="text-white md:w-1/2 text-center md:text-left md:mb-0">
-            <h1 className=" text-xl pb-5 md:text-7xl font-bold  ">
+            <h1 className=" text-3xl pb-5 md:text-5xl font-bold  ">
               Best Furniture & Interior Design in Nashik
             </h1>
             <p className="text-lg md:text-xl mb-6 leading-relaxed hidden ">
@@ -27,7 +27,7 @@ function Hero() {
             </p>
             <Link
               href="#packages"
-              className="bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 transition"
+              className="bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 transition "
             >
               View Packages
             </Link>
