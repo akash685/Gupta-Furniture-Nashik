@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://gupta-furniture.com/sitemap.xml
+
+# Disallow paths
+Disallow: /api/
+Disallow: /admin/

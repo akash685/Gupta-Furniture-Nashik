@@ -1,59 +1,91 @@
 'use client';
-import React, { useRef, useEffect } from 'react';
+import { useState } from 'react';
 
 const testimonials = [
-  { name: "Rahul Sharma", quote: "Amazing quality and great service. Highly recommended!" },
-  { name: "Priya Mehta", quote: "The best interior solutions in Nashik. Love my new furniture!" },
-  { name: "Amit Patel", quote: "Great value for money. The team was professional and efficient." }
+  {
+    name: 'Rahul Sharma',
+    role: 'Homeowner',
+    content: 'Gupta Furniture transformed our living room completely. Their attention to detail and quality of work is exceptional.',
+    image: '/testimonials/person1.jpg'
+  },
+  {
+    name: 'Priya Patel',
+    role: 'Interior Designer',
+    content: 'As an interior designer, I regularly recommend Gupta Furniture to my clients. Their craftsmanship is unmatched.',
+    image: '/testimonials/person2.jpg'
+  },
+  {
+    name: 'Amit Kumar',
+    role: 'Business Owner',
+    content: 'They designed and executed our office interior perfectly. Professional team and excellent service.',
+    image: '/testimonials/person3.jpg'
+  }
 ];
 
-function Testimonials() {
-  const containerRef = useRef(null);
+export default function Testimonials() {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+  const next = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
-    // Auto-scroll only on mobile view (width < 768px)
-    if (window.innerWidth < 768) {
-      const scrollInterval = setInterval(() => {
-        // If reached end, reset to start
-        if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
-          container.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          container.scrollBy({ left: 1, behavior: 'smooth' });
-        }
-      }, 20); // Adjust the interval (speed) as needed
-
-      return () => clearInterval(scrollInterval);
-    }
-  }, []);
+  const prev = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
+  };
 
   return (
-    <section className="py-5 px-8 bg-gray-100">
-      <h2 className="text-xl font-bold text-center ">What Our Customers Say</h2>
-      <div
-        ref={containerRef}
-        className="max-w-6xl mx-auto overflow-x-scroll flex space-x-6 p-4"
-        style={{
-          scrollbarWidth: 'none', // Firefox
-          msOverflowStyle: 'none' // IE 10+
-        }}
-      >
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all min-w-[300px] border border-gray-300"
-          >
-            <p className="italic text-gray-700 overflow-hidden text-ellipsis">
-              "{testimonial.quote}"
-            </p>
-            <h4 className="font-bold mt-4 text-gray-900">- {testimonial.name}</h4>
+    <div className="relative overflow-hidden bg-white py-16">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
+        
+        <div className="relative max-w-3xl mx-auto">
+          <div className="text-center px-4 md:px-8">
+            <div className="w-20 h-20 rounded-full mx-auto mb-6 bg-gray-200">
+              {/* Add actual image here */}
+            </div>
+            <blockquote className="text-xl italic text-gray-700 mb-6">
+              "{testimonials[currentIndex].content}"
+            </blockquote>
+            <div className="font-semibold text-lg">{testimonials[currentIndex].name}</div>
+            <div className="text-gray-500">{testimonials[currentIndex].role}</div>
           </div>
-        ))}
+
+          {/* Navigation Buttons */}
+          <button
+            onClick={prev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            onClick={next}
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Dots */}
+          <div className="flex justify-center space-x-2 mt-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 rounded-full ${
+                  currentIndex === index ? 'bg-blue-600' : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
-
-export default Testimonials;
