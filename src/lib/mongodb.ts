@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI!;
+const MONGODB_URI = process.env.MONGODB_URI || process.env.NEXT_PUBLIC_MONGODB_URI;
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable');
+  throw new Error(
+    'Please define the MONGODB_URI environment variable inside .env.local'
+  );
 }
 
 interface ConnectionProps {
@@ -14,45 +16,22 @@ const connection: ConnectionProps = {};
 
 async function connectDB() {
   if (connection.isConnected) {
-    console.log('Using existing connection');
     return;
   }
 
   try {
-    const db = await mongoose.connect(MONGODB_URI, {
+    const db = await mongoose.connect(MONGODB_URI as string, {
       maxPoolSize: 10,
-      minPoolSize: 5,
-      socketTimeoutMS: 45000,
       serverSelectionTimeoutMS: 5000,
-      family: 4,
-      heartbeatFrequencyMS: 1000,
+      socketTimeoutMS: 45000,
     });
 
     connection.isConnected = db.connections[0].readyState;
-    console.log('New DB Connection established');
+    console.log('Connected to MongoDB');
   } catch (error) {
     console.error('MongoDB connection error:', error);
     throw error;
   }
 }
-
-// Handle connection events
-mongoose.connection.on('connected', () => {
-  console.log('MongoDB connected successfully');
-});
-
-mongoose.connection.on('error', (err) => {
-  console.error('MongoDB connection error:', err);
-});
-
-mongoose.connection.on('disconnected', () => {
-  console.log('MongoDB disconnected');
-});
-
-// Handle process termination
-process.on('SIGINT', async () => {
-  await mongoose.connection.close();
-  process.exit(0);
-});
 
 export { connectDB };
