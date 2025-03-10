@@ -495,6 +495,7 @@ export default function HomePage() {
                 <Link href="/contact">
                 <button className="w-full mt-8 bg-primary text-secondary py-3 rounded-lg hover:bg-accent-gold-light transition-colors">
                   Get Quote
+                  
                 </button>
                 </Link>
               </div>
