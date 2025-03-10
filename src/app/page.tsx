@@ -173,7 +173,6 @@ const interiorPackages = [
       "2 Wardrobes",
       "TV Unit",
       "2 King Size Bed",
-      "Shoe Rack",
       "Sofa Set",
       "Crockery Unit",
       "Shoe Rack"
